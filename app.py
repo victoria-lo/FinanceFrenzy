@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QApplication, QWidget
 import sys
 from PyQt6.QtGui import QIcon
-
+import pandas as pd
 
 class Window(QWidget):
     def __init__(self):
