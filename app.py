@@ -6,6 +6,8 @@ import pandas as pd
 import sys
 
 from stock_exchange import StockExchangeDialog
+from assets import AssetsDialog
+from liabilities import LiabilitiesDialog
 
 
 class Window(QWidget):
@@ -39,6 +41,8 @@ class Window(QWidget):
         self.interest_data = pd.read_csv("./data/Interest_rates.csv")
 
         self.stock_exchange_dlg = None
+        self.asset_dlg = None
+        self.liabilities_dlg = None
 
     def create_widgets(self):
         stock_exchange_btn = QPushButton("Stock Exchange", self)
@@ -47,9 +51,27 @@ class Window(QWidget):
         stock_exchange_btn.setFont(QFont("Arial", 12))
         stock_exchange_btn.clicked.connect(self.open_stock_exchange)
 
+        asset_btn = QPushButton("Assets", self)
+        asset_btn.setGeometry(100, 1000, 200, 50)
+        asset_btn.setFont(QFont("Arial", 12))
+        asset_btn.clicked.connect(self.open_asset)
+
+        liabilities_btn = QPushButton("Liabilities", self)
+        liabilities_btn.setGeometry(600, 1000, 200, 50)
+        liabilities_btn.setFont(QFont("Arial", 12))
+        liabilities_btn.clicked.connect(self.open_liabilities)
+
     def open_stock_exchange(self):
         self.stock_exchange_dlg = StockExchangeDialog(self)
         self.stock_exchange_dlg.exec()
+
+    def open_asset(self):
+        self.asset_dlg = AssetsDialog(self)
+        self.asset_dlg.exec()
+
+    def open_liabilities(self):
+        self.liabilities_dlg = LiabilitiesDialog(self)
+        self.liabilities_dlg.exec()
 
     def buy_stock(self, stock):
         print(stock)
