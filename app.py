@@ -51,6 +51,9 @@ class Window(QWidget):
         self.stock_exchange_dlg = StockExchangeDialog(self)
         self.stock_exchange_dlg.exec()
 
+    def buy_stock(self, stock):
+        print(stock)
+
     def a_day_has_passed(self):
         self.day += 1
         print("A day has passed...")

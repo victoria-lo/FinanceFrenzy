@@ -1,6 +1,8 @@
-from PyQt6.QtWidgets import QDialog, QTableWidget, QTableWidgetItem
+from PyQt6.QtWidgets import QDialog, QTableWidget, QTableWidgetItem, QPushButton
 from PyQt6.QtGui import QBrush, QColor, QIcon
 from PyQt6.QtCore import QSize
+
+from functools import partial
 
 
 class StockExchangeDialog(QDialog):
@@ -9,7 +11,7 @@ class StockExchangeDialog(QDialog):
 
         self.app = app
         self.setWindowTitle("Stock Exchange")
-        self.setMinimumSize(QSize(830, 360))
+        self.setMinimumSize(QSize(900, 360))
         self.setWindowIcon(QIcon("./assets/stock-exchange.png"))
 
         self.table = QTableWidget(self)
@@ -23,9 +25,73 @@ class StockExchangeDialog(QDialog):
         self.set_table_values()
 
         # Resize of the rows and columns based on the content
-        self.table.setFixedWidth(830)
+        self.table.setFixedWidth(824)
         self.table.setFixedHeight(360)
         self.table.show()
+
+        # Set Buy buttons
+        k = len(self.app.it_data.columns) - self.app.day
+        stocks = [
+            {
+                "symbol": "SP500.25",
+                "name": "Consumer Discretionary",
+                "price": self.app.consumer_dis_data.iloc[k]["Price"]
+            },
+            {
+                "symbol": "SP500.30",
+                "name": "Consumer Staples",
+                "price": self.app.consumer_stp_data.iloc[k]["Price"]
+            },
+            {
+                "symbol": "SP500.10",
+                "name": "Energy",
+                "price": self.app.energy_data.iloc[k]["Price"]
+            },
+            {
+                "symbol": "SP500.40",
+                "name": "Financials",
+                "price": self.app.finance_data.iloc[k]["Price"]
+            },
+            {
+                "symbol": "SP500.35",
+                "name": "Healthcare",
+                "price": self.app.healthcare_data.iloc[k]["Price"]
+            },
+            {
+                "symbol": "SP500.20",
+                "name": "Industrials",
+                "price": self.app.industrials_data.iloc[k]["Price"]
+            },
+            {
+                "symbol": "SP500.45",
+                "name": "Information Technology",
+                "price": self.app.it_data.iloc[k]["Price"]
+            },
+            {
+                "symbol": "SP500.15",
+                "name": "Materials",
+                "price": self.app.materials_data.iloc[k]["Price"]
+            },
+            {
+                "symbol": "SP500.60",
+                "name": "Real Estate",
+                "price": self.app.real_estate_data.iloc[k]["Price"]
+            },
+            {
+                "symbol": "SP500.50",
+                "name": "Telecom Services",
+                "price": self.app.telecom_data.iloc[k]["Price"]
+            },
+            {
+                "symbol": "SP500.55",
+                "name": "Utilities",
+                "price": self.app.utilities_data.iloc[k]["Price"]
+            },
+        ]
+        for i in range(11):
+            buy_btn = QPushButton("BUY", self)
+            buy_btn.setGeometry(840, 30 + i * 30, 50, 20)
+            buy_btn.clicked.connect(lambda: self.app.buy_stock(stocks[i]))
 
     def set_table_values(self):
         # Set the table values
@@ -52,7 +118,7 @@ class StockExchangeDialog(QDialog):
                 self.table.setItem(6, i, QTableWidgetItem("Information Technology"))
                 self.table.setItem(7, i, QTableWidgetItem("Materials"))
                 self.table.setItem(8, i, QTableWidgetItem("Real Estate"))
-                self.table.setItem(9, i, QTableWidgetItem("Telecom"))
+                self.table.setItem(9, i, QTableWidgetItem("Telecom Services"))
                 self.table.setItem(10, i, QTableWidgetItem("Utilities"))
             else:
                 k = len(self.app.it_data.columns) - self.app.day
