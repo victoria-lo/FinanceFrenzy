@@ -8,6 +8,7 @@ import sys
 from stock_exchange import StockExchangeDialog
 from assets import AssetsDialog
 from liabilities import LiabilitiesDialog
+from cashflows import CashflowsDialog
 
 
 class Window(QWidget):
@@ -41,8 +42,11 @@ class Window(QWidget):
         self.interest_data = pd.read_csv("./data/Interest_rates.csv")
 
         self.stock_exchange_dlg = None
+        self.cashflows_dlg = None
         self.asset_dlg = None
         self.liabilities_dlg = None
+
+        self.cashflows = []
 
     def create_widgets(self):
         stock_exchange_btn = QPushButton("Stock Exchange", self)
@@ -50,6 +54,12 @@ class Window(QWidget):
         stock_exchange_btn.setIcon(QIcon("./assets/stock-exchange.png"))
         stock_exchange_btn.setFont(QFont("Arial", 12))
         stock_exchange_btn.clicked.connect(self.open_stock_exchange)
+
+        stock_exchange_btn = QPushButton("Cashflows", self)
+        stock_exchange_btn.setGeometry(1000, 1000, 200, 50)
+        stock_exchange_btn.setIcon(QIcon("./assets/money.png"))
+        stock_exchange_btn.setFont(QFont("Arial", 12))
+        stock_exchange_btn.clicked.connect(self.open_cashflows)
 
         asset_btn = QPushButton("Assets", self)
         asset_btn.setGeometry(100, 1000, 200, 50)
@@ -64,6 +74,10 @@ class Window(QWidget):
     def open_stock_exchange(self):
         self.stock_exchange_dlg = StockExchangeDialog(self)
         self.stock_exchange_dlg.exec()
+
+    def open_cashflows(self):
+        self.cashflows_dlg = CashflowsDialog(self)
+        self.cashflows_dlg.exec()
 
     def open_asset(self):
         self.asset_dlg = AssetsDialog(self)
@@ -82,7 +96,16 @@ class Window(QWidget):
         if self.stock_exchange_dlg is not None:
             self.stock_exchange_dlg.set_table_values()
 
-        if self.day > 365 * 5 + 1:
+        if self.day % 20 == 0:  # a month has passed (5 weekdays * 4 weeks) since we're not counting weekends
+            k = len(self.energy_data.columns) - self.day
+            self.cashflows.append({
+                "value": 10000,
+                "date": self.energy_data.iloc[k]["Date"]
+            })
+            if self.cashflows_dlg is not None:
+                self.cashflows_dlg.set_table_values()
+
+        if self.day > 52 * 5 + 1:
             self.timer.stop()
             print("GAME OVER!")
 

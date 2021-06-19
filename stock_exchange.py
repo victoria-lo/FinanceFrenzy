@@ -2,8 +2,6 @@ from PyQt6.QtWidgets import QDialog, QTableWidget, QTableWidgetItem, QPushButton
 from PyQt6.QtGui import QBrush, QColor, QIcon
 from PyQt6.QtCore import QSize
 
-from functools import partial
-
 
 class StockExchangeDialog(QDialog):
     def __init__(self, app):
