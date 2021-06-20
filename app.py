@@ -55,7 +55,7 @@ class Window(QWidget):
 
         self.cash_lbl = QLabel("", self)
         self.cash_lbl.setFont(QFont("Arial", 12))
-        self.cash_lbl.setGeometry(50, 70, 100, 20)
+        self.cash_lbl.setGeometry(50, 70, 200, 20)
         self.set_cash()
 
         self.interest_rate_lbl = QLabel("", self)
@@ -73,6 +73,7 @@ class Window(QWidget):
 
         self.set_interest_rates()
         self.set_inflation_rates()
+        self.stocks = []
         self.news = [
             {
                 "headline": "First Business Day of Y2K Uneventful",
@@ -259,8 +260,14 @@ class Window(QWidget):
         self.repaint()
 
     def buy_stock(self, stock):
+        k = len(self.energy_data.columns) - self.day
         self.cash -= stock['price']
         self.set_cash()
+        self.cashflows.append({
+            "value": -stock["price"],
+            "date": self.energy_data.iloc[k]["Date"]
+        })
+        self.stocks.append(stock)
         print(stock)
 
     def set_date(self):
@@ -269,7 +276,7 @@ class Window(QWidget):
         self.repaint()
 
     def set_cash(self):
-        self.cash_lbl.setText("$" + str(self.cash))
+        self.cash_lbl.setText("Cash: $" + str(self.cash.__round__(2)))
         self.repaint()
 
     def display_news(self):
