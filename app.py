@@ -268,7 +268,20 @@ class Window(QWidget):
             "date": self.energy_data.iloc[k]["Date"]
         })
         self.stocks.append(stock)
-        print(stock)
+
+    def sell_stock(self, assets_window):
+        k = len(self.energy_data.columns) - self.day
+        total = 0
+        for stock in self.stocks:
+            total += stock['price']
+        self.cash += total
+        self.set_cash()
+        self.cashflows.append({
+            "value": total,
+            "date": self.energy_data.iloc[k]["Date"]
+        })
+        self.stocks = []
+        assets_window.retranslateUi()
 
     def set_date(self):
         k = len(self.energy_data.columns) - self.day
