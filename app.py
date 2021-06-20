@@ -69,7 +69,7 @@ class Window(QWidget):
         self.headline_lbl = QLabel("", self)
         self.headline_lbl.setFont(QFont("Times New Roman", 32))
         self.headline_lbl.setWordWrap(True)
-        self.headline_lbl.setGeometry(300, 150, 780, 700)
+        self.headline_lbl.setGeometry(300, 120, 780, 700)
 
         self.set_interest_rates()
         self.set_inflation_rates()
