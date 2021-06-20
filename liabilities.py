@@ -10,6 +10,7 @@ class LiabilitiesDialog(QDialog):
         self.app = app
         self.setWindowTitle("Liabilities")
         self.setMinimumSize(QSize(981, 619))
+        self.setWindowIcon(QtGui.QIcon("./assets/liabilities.png"))
 
         self.label = QtWidgets.QLabel(self)
         self.update = QtWidgets.QPushButton(self)

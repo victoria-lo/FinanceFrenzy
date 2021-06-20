@@ -10,6 +10,7 @@ class AssetsDialog(QDialog):
         self.app = app
         self.setWindowTitle("Assets")
         self.setMinimumSize(QSize(969, 619))
+        self.setWindowIcon(QtGui.QIcon("./assets/assets.png"))
 
         self.sellbtn3 = QtWidgets.QPushButton(self)
         self.qty3 = QtWidgets.QLabel(self)

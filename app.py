@@ -14,8 +14,8 @@ from cashflows import CashflowsDialog
 class Window(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Financial Times")
-        self.setWindowIcon(QIcon("./assets/financial-times.png"))
+        self.setWindowTitle("Finance Frenzy")
+        self.setWindowIcon(QIcon("./assets/star.png"))
         self.setFixedHeight(1080)
         self.setFixedWidth(1350)
         self.newsFrame = QFrame(self)

@@ -4,6 +4,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class GameOver(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("Game Over")
+        MainWindow.setWindowIcon(QtGui.QIcon("./assets/star.png"))
         MainWindow.resize(1494, 839)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -60,14 +61,14 @@ class GameOver(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "Thanks for Playing!"))
-        self.label_2.setText(_translate("MainWindow", "GAME OVER"))
-        self.label_3.setText(_translate("MainWindow", "Your Final Net Worth"))
-        self.net_worth.setText(_translate("MainWindow", "$200,000"))
-        self.pushButton.setText(_translate("MainWindow", "Replay"))
-        self.pushButton_2.setText(_translate("MainWindow", "Quit Game"))
-        self.pushButton_3.setText(_translate("MainWindow", "See High Scores"))
+        MainWindow.setWindowTitle(_translate("Game Over", "Game Over"))
+        self.label.setText(_translate("Game Over", "Thanks for Playing!"))
+        self.label_2.setText(_translate("Game Over", "GAME OVER"))
+        self.label_3.setText(_translate("Game Over", "Your Final Net Worth"))
+        self.net_worth.setText(_translate("Game Over", "$200,000"))
+        self.pushButton.setText(_translate("Game Over", "Replay"))
+        self.pushButton_2.setText(_translate("Game Over", "Quit Game"))
+        self.pushButton_3.setText(_translate("Game Over", "See High Scores"))
 
 
 if __name__ == "__main__":
