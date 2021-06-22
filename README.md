@@ -1,9 +1,20 @@
-> Devpost Link: https://devpost.com/software/finance-frenzy/
+
+<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_thumbnail_photos/001/568/048/datas/medium.jpg"/>
 
 > Hydrangea Hacks 2021 Finance Hack and Top 6 Winner
 
-# Usage
-Run app.py
+
+# What it does
+
+- A simulation game where the player has to learn how to read the market conditions and make informed financial decisions based on the tools the game provides
+- We use historical stock prices, interest rates and inflation data (aka real data from 2000-2020) to simulate the market
+- Players will be presented with challenges and opportunities for to make decisions based on their current financial knowledge and in-game wealth/market conditions
+- Show cashflow summary graph at the end of 20 years, show high score graphs so player can see how they fare among other players
+- Allows player to make their own decision and build confidence/take responsibility for the outcomes of their financial decisions
+- Goal is to help player understand the relationship between commodity prices, interest rates and inflation, wealth management, assets/liabilities etc.
+- In essence, give them real-life scenarios to help them learn how to read the market
+- Re-playable: see their end net worth value after 20 years, see the high scores board. Replay to learn which decisions the player made that went wrong or could have been better.
+- Devpost Link: https://devpost.com/software/finance-frenzy/
 
 # Inspiration
 
@@ -20,23 +31,17 @@ Since the start of this pandemic, money management has never been more important
 Furthermore, schools never emphasize on the importance of wealth management and finance education. We were always taught that Math is important, Chemistry is important, but what about accounting? Taxes? Investing? These areas of knowledge are just as important to a young adolescent as traditional school subjects.
 
 So we build Finance Frenzy because we believe knowledge is empowerment. This is an educational game app that can help guide anyone to the path of financial literacy.
- 
-# What it does
 
-- A simulation game where the player has to learn how to read the market conditions and make informed financial decisions based on the tools the game provides
-- We use historical stock prices, interest rates and inflation data (aka real data from 2000-2020) to simulate the market
-- Players will be presented with challenges and opportunities for to make decisions based on their current financial knowledge and in-game wealth/market conditions
-- Show cashflow summary graph at the end of 20 years, show high score graphs so player can see how they fare among other players
-- Allows player to make their own decision and build confidence/take responsibility for the outcomes of their financial decisions
-- Goal is to help player understand the relationship between commodity prices, interest rates and inflation, wealth management, assets/liabilities etc.
-- In essence, give them real-life scenarios to help them learn how to read the market
-- Re-playable: see their end net worth value after 20 years, see the high scores board. Replay to learn which decisions the player made that went wrong or could have been better.
  
 # How we built it
 - The prototype is built with Python and a library called PyQt to make the UI elements
 - Downloaded historical U.S. interests and inflation rates from 2000-2020
 - To simplify the stock exchange, we used S&P sector prices as industry benchmark prices. Players can invest in only these 11 sector stocks, each representing a different industry.
 - Our demo showcase is the fully designed app we wanted to make, after the prototype phase.
+
+# Usage
+- Clone the repo
+- Run app.py
 
 # Challenges we ran into
 - Learning a new library in Python, PyQt took us some time. 
